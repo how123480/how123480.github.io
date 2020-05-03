@@ -13,19 +13,17 @@
         <link rel="icon" href="http://yoursite.com/assets/images/favicon1.ico">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tseng tzu hao","sameAs":["https://github.com/how123480","https://www.facebook.com/profile.php?id=100002595552069"],"image":"profile.png"},"articleBody":"##GDB###run with argvgdb —args {name} {argv[1], argv[2], …. }ex:\n1gdb --args .&#x2F;main arg1 arg2\n\n###x/nuf [address]n: repeat count\n\n\n\nu\nunit size (byte)\n\n\n\nb\n1\n\n\nh\n2\n\n\nw\n4\n\n\ng\n8\n\n\n","dateCreated":"2020-05-01T21:01:56+08:00","dateModified":"2020-05-03T16:16:02+08:00","datePublished":"2020-05-01T21:01:56+08:00","description":"","headline":"pwn cheat sheet","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://yoursite.com/2020/05/01/pwn-cheat-sheet/"},"publisher":{"@type":"Organization","name":"Tseng tzu hao","sameAs":["https://github.com/how123480","https://www.facebook.com/profile.php?id=100002595552069"],"image":"profile.png","logo":{"@type":"ImageObject","url":"profile.png"}},"url":"http://yoursite.com/2020/05/01/pwn-cheat-sheet/","keywords":"baby, cool"}</script>
-    <meta name="description" content="##GDB###run with argvgdb —args {name} {argv[1], argv[2], …. }ex: 1gdb --args .&#x2F;main arg1 arg2  ###x&#x2F;nuf [address]n: repeat count    u unit size (byte)    b 1   h 2   w 4   g 8">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tseng tzu hao","sameAs":["https://github.com/how123480","https://www.facebook.com/profile.php?id=100002595552069"],"image":"profile.png"},"articleBody":"GDB\n\nrun with argvgdb —args {name} {argv[1], argv[2], …. }ex:\n1gdb --args .&#x2F;main arg1 arg2\n\nx/nuf [address]n: repeat countu: unit size\n\n\n\nu\nunit size (byte)\n\n\n\nb\n1\n\n\nh\n2\n\n\nw\n4\n\n\ng\n8\n\n\nf: display format\n\n\n\nf\nformat\n\n\n\nx\nhex\n\n\nd\nint\n\n\ns\nstring\n\n\ni\ninstruction\n\n\notehr command\n\n\nu\nunit size (byte)\n\n\n\nreturn\nrun until this function end\n\n\nfinish\nfinish this process\n\n\nclear\nclear the screen\n\n\nq\nexit\n\n\nset registerset ${register}=valueex:\n1set $rax&#x3D;0xdeadbeef","dateCreated":"2020-05-01T21:01:56+08:00","dateModified":"2020-05-03T16:29:06+08:00","datePublished":"2020-05-01T21:01:56+08:00","description":"GDB","headline":"pwn cheat sheet","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://yoursite.com/2020/05/01/pwn-cheat-sheet/"},"publisher":{"@type":"Organization","name":"Tseng tzu hao","sameAs":["https://github.com/how123480","https://www.facebook.com/profile.php?id=100002595552069"],"image":"profile.png","logo":{"@type":"ImageObject","url":"profile.png"}},"url":"http://yoursite.com/2020/05/01/pwn-cheat-sheet/"}</script>
+    <meta name="description" content="GDB">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="pwn cheat sheet">
 <meta property="og:url" content="http://yoursite.com/2020/05/01/pwn-cheat-sheet/index.html">
 <meta property="og:site_name" content="how123480">
-<meta property="og:description" content="##GDB###run with argvgdb —args {name} {argv[1], argv[2], …. }ex: 1gdb --args .&#x2F;main arg1 arg2  ###x&#x2F;nuf [address]n: repeat count    u unit size (byte)    b 1   h 2   w 4   g 8">
+<meta property="og:description" content="GDB">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-01T13:01:56.000Z">
-<meta property="article:modified_time" content="2020-05-03T08:16:02.243Z">
+<meta property="article:modified_time" content="2020-05-03T08:29:06.440Z">
 <meta property="article:author" content="Tseng tzu hao">
-<meta property="article:tag" content="baby">
-<meta property="article:tag" content="cool">
 <meta name="twitter:card" content="summary">
     
     
@@ -277,10 +275,12 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <p>##GDB<br>###run with argv<br>gdb —args {name} {argv[1], argv[2], …. }<br>ex:</p>
+            <h3 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h3><a id="more"></a>
+
+<h4 id="run-with-argv"><a href="#run-with-argv" class="headerlink" title="run with argv"></a>run with argv</h4><p>gdb —args {name} {argv[1], argv[2], …. }<br>ex:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb --args .&#x2F;main arg1 arg2</span><br></pre></td></tr></table></figure>
 
-<p>###x/nuf [address]<br>n: repeat count</p>
+<h4 id="x-nuf-address"><a href="#x-nuf-address" class="headerlink" title="x/nuf [address]"></a>x/nuf [address]</h4><p>n: repeat count<br>u: unit size</p>
 <table>
 <thead>
 <tr>
@@ -305,20 +305,63 @@
 <td>8</td>
 </tr>
 </tbody></table>
-
+<p>f: display format</p>
+<table>
+<thead>
+<tr>
+<th>f</th>
+<th>format</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x</td>
+<td>hex</td>
+</tr>
+<tr>
+<td>d</td>
+<td>int</td>
+</tr>
+<tr>
+<td>s</td>
+<td>string</td>
+</tr>
+<tr>
+<td>i</td>
+<td>instruction</td>
+</tr>
+</tbody></table>
+<h4 id="otehr-command"><a href="#otehr-command" class="headerlink" title="otehr command"></a>otehr command</h4><table>
+<thead>
+<tr>
+<th>u</th>
+<th>unit size (byte)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>return</td>
+<td>run until this function end</td>
+</tr>
+<tr>
+<td>finish</td>
+<td>finish this process</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>clear the screen</td>
+</tr>
+<tr>
+<td>q</td>
+<td>exit</td>
+</tr>
+</tbody></table>
+<h4 id="set-register"><a href="#set-register" class="headerlink" title="set register"></a>set register</h4><p>set ${register}=value<br>ex:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set $rax&#x3D;0xdeadbeef</span><br></pre></td></tr></table></figure>
             
 
 
         </div>
     </div>
     <div id="post-footer" class="post-footer main-content-wrap">
-        
-            <div class="post-footer-tags">
-                <span class="text-color-light text-small">TAGGED IN</span><br/>
-                
-    <a class="tag tag--primary tag--small t-link" href="/tags/baby/" rel="tag">baby</a> <a class="tag tag--primary tag--small t-link" href="/tags/cool/" rel="tag">cool</a>
-
-            </div>
         
         
             <div class="post-actions-wrap">
@@ -340,14 +383,11 @@
             </li>
             <li class="post-action">
                 
-                    
-                <a
-                    class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/05/01/hello-world/"
-                    data-tooltip="Hello World"
-                    aria-label="NEXT: Hello World"
-                >
-                    
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
                         <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </a>
@@ -455,14 +495,11 @@
             </li>
             <li class="post-action">
                 
-                    
-                <a
-                    class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/05/01/hello-world/"
-                    data-tooltip="Hello World"
-                    aria-label="NEXT: Hello World"
-                >
-                    
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
                         <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </a>

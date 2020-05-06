@@ -6,25 +6,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="how123480">
-    <title>vim config - how123480</title>
+    <title>Build your pwn environment with docker - how123480</title>
     <meta name="author" content="Tseng tzu hao">
     
     
         <link rel="icon" href="https://how123480.github.io/assets/images/favicon.png">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tseng tzu hao","sameAs":["https://github.com/how123480","https://www.facebook.com/profile.php?id=100002595552069"],"image":"profile.png"},"articleBody":"open ~/.vimrc and add \n\n\n1234567891011vim ~&#x2F;.vimrcset numberset mouse&#x3D;aset tabstop&#x3D;2set shiftwidth&#x3D;2set scrolloff&#x3D;3colorscheme ronset cursorlineset cursorcolumnsyntax enable\n","dateCreated":"2020-05-02T02:37:43+08:00","dateModified":"2020-05-03T17:24:47+08:00","datePublished":"2020-05-02T02:37:43+08:00","description":"open ~/.vimrc and add ","headline":"vim config","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://how123480.github.io/2020/05/02/vim-config/"},"publisher":{"@type":"Organization","name":"Tseng tzu hao","sameAs":["https://github.com/how123480","https://www.facebook.com/profile.php?id=100002595552069"],"image":"profile.png","logo":{"@type":"ImageObject","url":"profile.png"}},"url":"https://how123480.github.io/2020/05/02/vim-config/","keywords":"vim"}</script>
-    <meta name="description" content="open ~&#x2F;.vimrc and add">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tseng tzu hao","sameAs":["https://github.com/how123480","https://www.facebook.com/profile.php?id=100002595552069"],"image":"profile.png"},"articleBody":"Pull ubuntu 16.04 from docker hub‘–cap-add=SYS_PTRACE –security-opt seccomp=unconfined’ make sure your gdb can attach your process with permission. \n12docker pull ubuntu:16.04docker run --cap-add&#x3D;SYS_PTRACE --security-opt seccomp&#x3D;unconfined -i -t --name create_env ubuntu:16.04 bash\n\nSome useful packages1234apt-get install -y software-properties-commonapt-get install vimapt-get install gitapt-get install wget\nInstall gdb1apt-get install gdb\n\nInstall pwntools 31234567891011# install python3apt-get install python3apt-get -y install python3-pip# install pwntool3apt-get updateapt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essentialpython3 -m pip install --upgrade pippython3 -m pip install --upgrade git+https:&#x2F;&#x2F;github.com&#x2F;Gallopsled&#x2F;pwntools.git@dev\n\nInstall peda123git clone https:&#x2F;&#x2F;github.com&#x2F;longld&#x2F;peda.git ~&#x2F;pedaecho &quot;source ~&#x2F;peda&#x2F;peda.py&quot; &gt;&gt; ~&#x2F;.gdbinitecho &quot;DONE! debug your program with gdb and enjoy&quot;\n\nStart your environmentassume your container ID is ba286abaed92.\n12docker container start ba286abaed92docker exec -i -t ba286abaed92 bash\n\nTrouble shooting\nptrace: Operation not permitted rebuild your env with ‘–cap-add=SYS_PTRACE –security-opt seccomp=unconfined’.\n\nx64 can’t support running 32(bits) code install i386 arch:\n 123sudo dpkg --add-architecture i386sudo apt-get updatesudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386\n\n\n\n","dateCreated":"2020-05-07T01:27:36+08:00","dateModified":"2020-05-07T01:50:32+08:00","datePublished":"2020-05-07T01:27:36+08:00","description":"Pull ubuntu 16.04 from docker hub‘–cap-add=SYS_PTRACE –security-opt seccomp=unconfined’ make sure your gdb can attach your process with permission. \n12docker pull ubuntu:16.04docker run --cap-add&#x3D;SYS_PTRACE --security-opt seccomp&#x3D;unconfined -i -t --name create_env ubuntu:16.04 bash","headline":"Build your pwn environment with docker","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://how123480.github.io/2020/05/07/pwn-docker-env/"},"publisher":{"@type":"Organization","name":"Tseng tzu hao","sameAs":["https://github.com/how123480","https://www.facebook.com/profile.php?id=100002595552069"],"image":"profile.png","logo":{"@type":"ImageObject","url":"profile.png"}},"url":"https://how123480.github.io/2020/05/07/pwn-docker-env/","keywords":"pwn, docker"}</script>
+    <meta name="description" content="Pull ubuntu 16.04 from docker hub‘–cap-add&#x3D;SYS_PTRACE –security-opt seccomp&#x3D;unconfined’ make sure your gdb can attach your process with permission.  12docker pull ubuntu:16.04docker run --cap-add&amp;#x3D">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="vim config">
-<meta property="og:url" content="https://how123480.github.io/2020/05/02/vim-config/index.html">
+<meta property="og:title" content="Build your pwn environment with docker">
+<meta property="og:url" content="https://how123480.github.io/2020/05/07/pwn-docker-env/index.html">
 <meta property="og:site_name" content="how123480">
-<meta property="og:description" content="open ~&#x2F;.vimrc and add">
+<meta property="og:description" content="Pull ubuntu 16.04 from docker hub‘–cap-add&#x3D;SYS_PTRACE –security-opt seccomp&#x3D;unconfined’ make sure your gdb can attach your process with permission.  12docker pull ubuntu:16.04docker run --cap-add&amp;#x3D">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-01T18:37:43.000Z">
-<meta property="article:modified_time" content="2020-05-03T09:24:47.737Z">
+<meta property="article:published_time" content="2020-05-06T17:27:36.000Z">
+<meta property="article:modified_time" content="2020-05-06T17:50:32.172Z">
 <meta property="article:author" content="Tseng tzu hao">
-<meta property="article:tag" content="vim">
+<meta property="article:tag" content="pwn">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
     
     
@@ -260,22 +261,16 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title">
-            vim config
+            Build your pwn environment with docker
         </h1>
     
     
         <div class="post-meta">
-    <time datetime="2020-05-02T02:37:43+08:00">
+    <time datetime="2020-05-07T01:27:36+08:00">
 	
-		    May 02, 2020
+		    May 07, 2020
     	
     </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/config/">config</a>
-
-
     
 </div>
 
@@ -285,10 +280,27 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <p>open ~/.vimrc and add </p>
+            <h4 id="Pull-ubuntu-16-04-from-docker-hub"><a href="#Pull-ubuntu-16-04-from-docker-hub" class="headerlink" title="Pull ubuntu 16.04 from docker hub"></a>Pull ubuntu 16.04 from docker hub</h4><p><strong>‘–cap-add=SYS_PTRACE –security-opt seccomp=unconfined’</strong> make sure your gdb can attach your process with permission. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:16.04</span><br><span class="line">docker run --cap-add&#x3D;SYS_PTRACE --security-opt seccomp&#x3D;unconfined -i -t --name create_env ubuntu:16.04 bash</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
+<h4 id="Some-useful-packages"><a href="#Some-useful-packages" class="headerlink" title="Some useful packages"></a>Some useful packages</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y software-properties-common</span><br><span class="line">apt-get install vim</span><br><span class="line">apt-get install git</span><br><span class="line">apt-get install wget</span><br></pre></td></tr></table></figure>
+<h4 id="Install-gdb"><a href="#Install-gdb" class="headerlink" title="Install gdb"></a>Install gdb</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install gdb</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim ~&#x2F;.vimrc</span><br><span class="line"></span><br><span class="line">set number</span><br><span class="line">set mouse&#x3D;a</span><br><span class="line">set tabstop&#x3D;2</span><br><span class="line">set shiftwidth&#x3D;2</span><br><span class="line">set scrolloff&#x3D;3</span><br><span class="line">colorscheme ron</span><br><span class="line">set cursorline</span><br><span class="line">set cursorcolumn</span><br><span class="line">syntax enable</span><br></pre></td></tr></table></figure>
+<h4 id="Install-pwntools-3"><a href="#Install-pwntools-3" class="headerlink" title="Install pwntools 3"></a>Install pwntools 3</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># install python3</span><br><span class="line"></span><br><span class="line">apt-get install python3</span><br><span class="line">apt-get -y install python3-pip</span><br><span class="line"></span><br><span class="line"># install pwntool3</span><br><span class="line"></span><br><span class="line">apt-get update</span><br><span class="line">apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential</span><br><span class="line">python3 -m pip install --upgrade pip</span><br><span class="line">python3 -m pip install --upgrade git+https:&#x2F;&#x2F;github.com&#x2F;Gallopsled&#x2F;pwntools.git@dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="Install-peda"><a href="#Install-peda" class="headerlink" title="Install peda"></a>Install peda</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;longld&#x2F;peda.git ~&#x2F;peda</span><br><span class="line">echo &quot;source ~&#x2F;peda&#x2F;peda.py&quot; &gt;&gt; ~&#x2F;.gdbinit</span><br><span class="line">echo &quot;DONE! debug your program with gdb and enjoy&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Start-your-environment"><a href="#Start-your-environment" class="headerlink" title="Start your environment"></a>Start your environment</h4><p>assume your container ID is ba286abaed92.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker container start ba286abaed92</span><br><span class="line">docker exec -i -t ba286abaed92 bash</span><br></pre></td></tr></table></figure>
+
+<h4 id="Trouble-shooting"><a href="#Trouble-shooting" class="headerlink" title="Trouble shooting"></a>Trouble shooting</h4><ol>
+<li><p>ptrace: Operation not permitted<br> rebuild your env with <strong>‘–cap-add=SYS_PTRACE –security-opt seccomp=unconfined’</strong>.</p>
+</li>
+<li><p>x64 can’t support running 32(bits) code<br> install i386 arch:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
 
             
 
@@ -300,7 +312,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/vim/" rel="tag">vim</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/docker/" rel="tag">docker</a> <a class="tag tag--primary tag--small t-link" href="/tags/pwn/" rel="tag">pwn</a>
 
             </div>
         
@@ -310,14 +322,11 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    
-                <a
-                    class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/05/07/pwn-docker-env/"
-                    data-tooltip="Build your pwn environment with docker"
-                    aria-label="PREVIOUS: Build your pwn environment with docker"
-                >
-                    
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
                     </a>
@@ -327,9 +336,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/05/01/pwn-cheat-sheet/"
-                    data-tooltip="pwn cheat sheet"
-                    aria-label="NEXT: pwn cheat sheet"
+                    href="/2020/05/02/vim-config/"
+                    data-tooltip="vim config"
+                    aria-label="NEXT: vim config"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
@@ -354,7 +363,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://how123480.github.io/2020/05/02/vim-config/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://how123480.github.io/2020/05/07/pwn-docker-env/"
                     title="Share on Facebook"
                     aria-label="Share on Facebook"
                 >
@@ -367,7 +376,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=https://how123480.github.io/2020/05/02/vim-config/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://how123480.github.io/2020/05/07/pwn-docker-env/"
                     title="Share on Twitter"
                     aria-label="Share on Twitter"
                 >
@@ -380,7 +389,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=https://how123480.github.io/2020/05/02/vim-config/"
+                    target="new" href="https://plus.google.com/share?url=https://how123480.github.io/2020/05/07/pwn-docker-env/"
                     title="Share on Google+"
                     aria-label="Share on Google+"
                 >
@@ -425,14 +434,11 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    
-                <a
-                    class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/05/07/pwn-docker-env/"
-                    data-tooltip="Build your pwn environment with docker"
-                    aria-label="PREVIOUS: Build your pwn environment with docker"
-                >
-                    
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
                     </a>
@@ -442,9 +448,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2020/05/01/pwn-cheat-sheet/"
-                    data-tooltip="pwn cheat sheet"
-                    aria-label="NEXT: pwn cheat sheet"
+                    href="/2020/05/02/vim-config/"
+                    data-tooltip="vim config"
+                    aria-label="NEXT: vim config"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
@@ -469,7 +475,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://how123480.github.io/2020/05/02/vim-config/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://how123480.github.io/2020/05/07/pwn-docker-env/"
                     title="Share on Facebook"
                     aria-label="Share on Facebook"
                 >
@@ -482,7 +488,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=https://how123480.github.io/2020/05/02/vim-config/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://how123480.github.io/2020/05/07/pwn-docker-env/"
                     title="Share on Twitter"
                     aria-label="Share on Twitter"
                 >
@@ -495,7 +501,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=https://how123480.github.io/2020/05/02/vim-config/"
+                    target="new" href="https://plus.google.com/share?url=https://how123480.github.io/2020/05/07/pwn-docker-env/"
                     title="Share on Google+"
                     aria-label="Share on Google+"
                 >
@@ -529,7 +535,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://www.facebook.com/sharer/sharer.php?u=https://how123480.github.io/2020/05/02/vim-config/"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://how123480.github.io/2020/05/07/pwn-docker-env/"
                         aria-label="Share on Facebook"
                     >
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
@@ -542,7 +548,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://twitter.com/intent/tweet?text=https://how123480.github.io/2020/05/02/vim-config/"
+                        href="https://twitter.com/intent/tweet?text=https://how123480.github.io/2020/05/07/pwn-docker-env/"
                         aria-label="Share on Twitter"
                     >
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
@@ -555,7 +561,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://plus.google.com/share?url=https://how123480.github.io/2020/05/02/vim-config/"
+                        href="https://plus.google.com/share?url=https://how123480.github.io/2020/05/07/pwn-docker-env/"
                         aria-label="Share on Google+"
                     >
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
